@@ -81,15 +81,17 @@ int main(void) {
 						"L)Latam.", precioAerolineas, precioLatam);
 				fflush(stdin);
 				scanf("%c", &empresaAElegir);
-					while (empresaAElegir != 'A' && empresaAElegir != 'L') {
+				tolower(empresaAElegir);
+					while (empresaAElegir != 'a' && empresaAElegir != 'l' && empresaAElegir != 'A' && empresaAElegir != 'L') {
 						printf("¡Error! \n"
 								"Elija la empresa: \n"
 								"A)Aerolineas. \n"
 								"L)Latam.");
 						fflush(stdin);
 						scanf("%c", &empresaAElegir);
+						tolower(empresaAElegir);
 					}
-					if (empresaAElegir == 'A') {
+					if (empresaAElegir == 'a' || empresaAElegir == 'A') {
 						printf("Ingrese el precio en Aerolineas: ");
 						scanf("%f", &precioAerolineas);
 					}
@@ -100,7 +102,7 @@ int main(void) {
 				break;
 			case 3:
 
-				if (precioLatam > 0 || precioAerolineas > 0){
+				if ((precioLatam > 0 || precioAerolineas > 0) && kmVuelo > 0){
 					calcularPrecios (&precioDebitoLatam, &precioCreditoLatam, &precioBitcoinLatam,
 									&precioPorKmLatam, precioLatam, kmVuelo);
 					calcularPrecios (&precioDebitoAerolineas, &precioCreditoAerolineas, &precioBitcoinAerolineas,
